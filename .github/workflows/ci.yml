@@ -1,0 +1,12 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+  merge_group: # the check also runs inside GitHub's merge queue, on main merged with the queued PRs
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node --test
